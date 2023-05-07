@@ -17,8 +17,8 @@ public class Main {
         if(scanner.hasNextInt()){
             operand = scanner.nextInt();
         } else {
-            System.out.println("Вы допустили ошибку при вводе числа. Попробуйте еще раз.");
-            scanner.next();//рекурсия
+            System.out.println("Ошибка при вводе числа. Попробуйте еще раз.");
+            scanner.next();
             operand = nextInt();
         }
         return operand;
@@ -30,8 +30,8 @@ public class Main {
         if(scanner.hasNext()){
             operation = scanner.next().charAt(0);
         } else {
-            System.out.println("Вы допустили ошибку при вводе операции. Попробуйте еще раз.");
-            scanner.next();//рекурсия
+            System.out.println("Ошибка при вводе операции. Попробуйте еще раз.");
+            scanner.next();
             operation = getOperation();
         }
         return operation;
@@ -39,22 +39,15 @@ public class Main {
 
     public static int calc(int operand1, int operand2, char operation){
         int result;
-        switch (operation){
-            case '+':
-                result = operand1+operand2;
-                break;
-            case '-':
-                result = operand1-operand2;
-                break;
-            case '*':
-                result = operand1*operand2;
-                break;
-            case '/':
-                result = operand1/operand2;
-                break;
-            default:
+        switch (operation) {
+            case '+' -> result = operand1 + operand2;
+            case '-' -> result = operand1 - operand2;
+            case '*' -> result = operand1 * operand2;
+            case '/' -> result = operand1 / operand2;
+            default -> {
                 System.out.println("Операция не распознана. Повторите ввод.");
-                result = calc(operand1, operand2, getOperation());//рекурсия
+                result = calc(operand1, operand2, getOperation());
+            }
         }
         return result;
     }
